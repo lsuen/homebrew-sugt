@@ -1,8 +1,11 @@
 cask "sugt" do
-  version "1.1.1"
-  sha256 "084e28d404a4acb8b4b9822e8f2eaddcf51a2e019a8a79fcd72b052dca396b65"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://github.com/lsuen/sugt/releases/download/v#{version}/SUTAI-#{version}-macos-x64.zip"
+  version "1.1.3"
+  sha256 arm: "ffaba4e27e151719772a43e0170180a858eba7a37cd06821541d6f9558fec4da",
+         intel: "8e864fcb95643d2ba0917ae6d36ef5ffadda872eaa14e0b9e18a5741e20dee60"
+
+  url "https://github.com/lsuen/sugt/releases/download/v#{version}/SUTAI-#{version}-macos-#{arch}.zip"
   name "SUGT"
   name "SUTAI"
   desc "SUGT (su gateway) - local AI gateway for unified LLM access"
