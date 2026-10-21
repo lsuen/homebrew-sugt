@@ -1,9 +1,9 @@
 cask "sugt" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.1.3"
-  sha256 arm: "ffaba4e27e151719772a43e0170180a858eba7a37cd06821541d6f9558fec4da",
-         intel: "8e864fcb95643d2ba0917ae6d36ef5ffadda872eaa14e0b9e18a5741e20dee60"
+  version "1.1.4"
+  sha256 arm: "e7f929026cdd403d4e8ca9422edc00de15f694e58c7cc5d6fa12a919531fd1f5",
+         intel: "2dcb043f402bc04e9790fb43cf9e9bf18e694f7e056bf6dd496da9912a4b337d"
 
   url "https://github.com/lsuen/sugt/releases/download/v#{version}/SUTAI-#{version}-macos-#{arch}.zip"
   name "SUGT"
