@@ -1,27 +1,31 @@
+# 作者：sun / 孙文龙
+# 用途：SUGT 滚动发布 cask。URL 固定指向 releases/latest 的稳定资产名，
+#       因此 sugt 每次发版只需替换同名 release 资产，本仓库无需再改动。
 cask "sugt" do
   arch arm: "arm64", intel: "x64"
 
-  version "1.1.7"
-  sha256 arm:   "f79381be1c4d9b5a087bba9246bfdf3268c21d11fe75d8ba33e578c67255cd32",
-         intel: "8f5565ceeb87876bbd4dbd59f734b688ffd832935a8e9cb2c9690f023196cb19"
+  version :latest
+  sha256 :no_check
 
-  url "https://github.com/lsuen/sugt/releases/download/v#{version}/SUTAI-#{version}-macos-#{arch}.zip"
+  url "https://github.com/lsuen/sugt/releases/latest/download/SUTAI-macos-#{arch}.zip"
   name "SUGT"
   name "SUTAI"
   desc "SUGT (su gateway) - local AI gateway for unified LLM access"
   homepage "https://github.com/lsuen/sugt"
 
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
+  # 应用内置更新；:latest cask 需显式点名或 --greedy 才会重新下载。
+  auto_updates true
 
   app "SUTAI.app"
 
   uninstall quit: "com.qmtech.sugt"
 
   caveats <<~EOS
-    The app is unsigned. On first launch, right-click the app in Finder and select "Open",
-    or run: xattr -cr "/Applications/SUTAI.app"
+    Release 资产名固定、不含版本号，本 cask 始终安装最新版本。
+    应用未签名：首次启动请在 Finder 中右键 → 打开，或执行：
+      xattr -cr "/Applications/SUTAI.app"
+    手动重装最新版：
+      brew upgrade --cask --greedy sugt
+    SHA256 校验清单见对应 release 的 SUTAI-checksums.txt。
   EOS
 end
